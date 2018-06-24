@@ -1,23 +1,26 @@
 package DAO;
 
+import java.util.List;
+
 public class Vaga 
 {
     private int id;
-    private bool publicada;
+    private boolean publicada;
     private List<Area> areas;
+    
 
     public Vaga(int id, List<Area> areas) 
 	{
         this.id = id;
         this.publicada = false;
-		if(areas.Count > 0)
-		{
-			this.areas = areas;
-		}
+		if(areas.size() <= 0)
+                {
+                    this.areas = new List<Area>(); //Ta dando erro aqui pra newList mas n sei pq
+                }
 		else
-		{
-			this.areas = new List<Area>();
-		}
+                {
+                    this.areas = areas;
+                }
     }
     
 	public int GetID()
@@ -25,7 +28,7 @@ public class Vaga
 		return id;
 	}
 	
-	public bool EstaPublicada()
+	public boolean EstaPublicada()
 	{
 		return publicada;
 	}
@@ -40,33 +43,33 @@ public class Vaga
 		return areas;
 	}
 	
-	public bool AddArea(Area newArea)
+	public boolean AddArea(Area newArea)
 	{
-		if(areas.Find(newArea))
+		if(areas.equals(newArea))
 			return false;
 		
-		areas.Add(newArea);
+		areas.add(newArea);
 		return true;
 	}
 	
-	public bool RemoveArea(Area oldArea)
+	public boolean RemoveArea(Area oldArea)
 	{
-		Area area = areas.Find(oldArea);
+		Area area = areas.get(areas.indexOf(oldArea));
 		if(area != null)
 		{
-			areas.Remove(area);
+			areas.remove(area);
 			return true;
 		}
 		else
 			return false;
 	}
 	
-	public void RemoveArea(int areaID)
+	public boolean RemoveArea(int areaID)
 	{
-		Area area = areas.Find(x => x.GetID() == areaID);
+		Area area = areas.get(areas.indexOf(areaID));
 		if(area != null)
 		{
-			areas.Remove(area);
+			areas.remove(areas.indexOf(area));
 			return true;
 		}
 		else
