@@ -15,7 +15,7 @@ public class Vaga
         this.publicada = false;
 		if(areas.size() <= 0)
                 {
-                    this.areas = new List<Area>(); //Ta dando erro aqui pra newList mas n sei pq
+                    this.areas = new ArrayList();
                 }
 		else
                 {
@@ -45,7 +45,7 @@ public class Vaga
 	
 	public boolean AddArea(Area newArea)
 	{
-		if(areas.equals(newArea))
+		if(Find(newArea))
 			return false;
 		
 		areas.add(newArea);
@@ -54,7 +54,18 @@ public class Vaga
 	
 	public boolean RemoveArea(Area oldArea)
 	{
-		Area area = areas.get(areas.indexOf(oldArea));
+		if(areas.contains(oldArea))
+		{
+			areas.remove(oldArea);
+			return true;
+		}
+		else
+			return false;
+	}
+	
+	public boolean RemoveArea(int areaID)
+	{
+		Area area = Find(areaID);
 		if(area != null)
 		{
 			areas.remove(area);
@@ -64,15 +75,31 @@ public class Vaga
 			return false;
 	}
 	
-	public boolean RemoveArea(int areaID)
+	private Area Find(int areaID)
 	{
-		Area area = areas.get(areas.indexOf(areaID));
-		if(area != null)
+		if(areas.isEmpty())
+			return null;
+		
+		for(int i = 0; i < areas.Count; i++)
 		{
-			areas.remove(areas.indexOf(area));
-			return true;
+			if(areas[i].GetID() == areaID)
+				return areas[i];
 		}
-		else
-			return false;
+		
+		return null;
+	}
+	
+	private Area Find(Area oldArea)
+	{
+		if(areas.isEmpty())
+			return null;
+		
+		for(int i = 0; i < areas.Count; i++)
+		{
+			if(areas[i] == oldArea)
+				return areas[i];
+		}
+		
+		return null;
 	}
 }
