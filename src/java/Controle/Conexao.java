@@ -28,7 +28,7 @@ public class Conexao {
     public Conexao() {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");//load driver
-            conexao = DriverManager.getConnection("jdbc:sqlserver://ROB-PC\\SQLEXPRESS;databaseName=NomeBD", "loginBD", "senhaBD");
+            conexao = DriverManager.getConnection("jdbc:sqlserver://ROB-PC\\SQLEXPRESS;databaseName=Sistag_UFF", "Roberta", "");
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException("Nao foi possivel efetuar uma conexao com o BD!");
