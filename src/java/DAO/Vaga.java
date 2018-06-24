@@ -1,5 +1,6 @@
 package DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Vaga 
@@ -45,7 +46,7 @@ public class Vaga
 	
 	public boolean AddArea(Area newArea)
 	{
-		if(Find(newArea))
+		if (Find(newArea)!= null) 
 			return false;
 		
 		areas.add(newArea);
@@ -79,14 +80,17 @@ public class Vaga
 	{
 		if(areas.isEmpty())
 			return null;
-		
-		for(int i = 0; i < areas.Count; i++)
+		Area temp ;
+                
+		for(int i = 0; i < areas.size(); i++)
 		{
-			if(areas[i].GetID() == areaID)
-				return areas[i];
+			temp = areas.get(i);
+			if(temp.GetID() == areaID)
+				return temp;
 		}
-		
 		return null;
+                
+                
 	}
 	
 	private Area Find(Area oldArea)
@@ -94,10 +98,10 @@ public class Vaga
 		if(areas.isEmpty())
 			return null;
 		
-		for(int i = 0; i < areas.Count; i++)
+		for(int i = 0; i < areas.size(); i++)
 		{
-			if(areas[i] == oldArea)
-				return areas[i];
+			if(areas.get(i) == oldArea)
+				return areas.get(i);
 		}
 		
 		return null;
