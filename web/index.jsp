@@ -22,9 +22,9 @@
         <li><a href="#">Sobre</a></li>
             <li><a href="#">Faça seu login</a>
                 <ul>
-                      <li><a href="#">Login Coordenador</a></li>
-                      <li><a href="#">Login Aluno</a></li>
-                      <li><a href="#">Login Empresa</a></li>                    
+                      <li><a href="loginCoordenador.jsp">Login Coordenador</a></li>
+                      <li><a href="loginAluno.jsp">Login Aluno</a></li>
+                      <li><a href="loginEmpresa.jsp">Login Empresa</a></li>                    
                 </ul>
             </li>
         <li><a href="#">Links</a></li>
