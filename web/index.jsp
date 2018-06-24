@@ -28,7 +28,7 @@
                 </ul>
             </li>
         <li><a href="#">Links</a></li>
-        <li><a href="#">Contato</a></li>                
+        <li><a href="contato.jsp">Contato</a></li>                
 </ul>
 </nav>
          
