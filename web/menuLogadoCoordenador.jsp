@@ -15,7 +15,8 @@
     </head>
     <body>
         <img src= "imagem/uff.PNG">
-        <br>
+        <h1>Sistema de Estágios da UFF</h1> 
+        <nav>
         <ul class="menu">
         <li><a href="#">Home</a></li>
             <li><a href="#">Perfil</a>
@@ -33,7 +34,8 @@
             </li>
         <li><a href="links.jsp">Links</a></li>
         <li><a href="contato.jsp">Contato</a></li>     
-       <br><br>
+</ul>
+</nav><br><br> 
 <br>
        <form method="POST" action="erro.html">
         <input type="text" name="pesquisa" value="Pesquisar">
