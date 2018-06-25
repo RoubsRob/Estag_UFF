@@ -18,7 +18,7 @@
         <h1>Entre com os dados abaixo:</h1>
             <form action="CriaCoordenador" method="POST">
         Nome <input type="text" name="nome"> <br>
-        Login <input type="password" name="login"><br>
+        Login <input type="text" name="login"><br>
         Senha <input type="password" name="senha"><br>
         Matrícula <input type="password" name="id"><br>
         <input type="submit" value="Login"></h1>
