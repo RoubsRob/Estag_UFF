@@ -33,8 +33,8 @@ public class VerificarLoginCoordenador extends HttpServlet {
             throws ServletException, IOException {
 //        System.out.println("Entrou no VERIFICAR LOGIN!!!");
 try{
-       
-        String nome_user = request.getParameter("login");
+       System.out.println("Entrou no servlet VerificarLoginCoordenador");
+        String nome_user = request.getParameter("loginCoord");
         String senha_user = request.getParameter("senha");
         
         
@@ -53,17 +53,21 @@ try{
                 meuCookie.setMaxAge(60*30);
                 response.addCookie(meuCookie);
                 
-                RequestDispatcher resposta = request.getRequestDispatcher("/menuLogado.jsp");
+                RequestDispatcher resposta = request.getRequestDispatcher("/menuLogadoCoordenador.jsp");
                 resposta.forward(request, response);
             } else {
                 response.sendRedirect("index.jsp");
             }
         } catch (SQLException ex) {
+            RequestDispatcher resposta = request.getRequestDispatcher("/erro.jsp");
+            resposta.forward(request, response);
             Logger.getLogger(VerificarLoginCoordenador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }catch (Exception e){
     System.out.println("ERRO NO LOGIN");
-}
+    RequestDispatcher resposta = request.getRequestDispatcher("/erro.jsp");
+    resposta.forward(request, response);
+    }
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
