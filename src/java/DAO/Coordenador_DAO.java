@@ -75,14 +75,16 @@ public class Coordenador_DAO {
     }
 
 
-    public static boolean criar(String login, String senha) throws SQLException{
+    public static boolean criar(Integer id,String login, String senha, String nome) throws SQLException{
           Conexao conexao = new Conexao();
           boolean deu = false;
           try{
-              String sqlQ="INSERT INTO ADMINISTRADOR VALUES(?,?)"; //sem aspas no ?
+              String sqlQ="INSERT INTO COORDENADOR (id,login,senha,nome) VALUES(?,?,?,?)"; //sem aspas no ?
               PreparedStatement sql = conexao.getConexao().prepareStatement(sqlQ);
-              sql.setString(1, login);
-              sql.setString(2, senha);
+              sql.setInt(1, id);
+              sql.setString(2, login);
+              sql.setString(3, senha);
+              sql.setString(4, nome);
               sql.executeUpdate();
               deu = true;
            }catch (SQLException e){
@@ -118,7 +120,7 @@ public class Coordenador_DAO {
           Conexao conexao = new Conexao();
           boolean deu = false;
           try{
-              String sqlQ="UPDATE ADMINISTRADOR SET SENHA = ? WHERE LOGIN = ? ";
+              String sqlQ="UPDATE COORDENADOR SET SENHA = ? WHERE LOGIN = ? ";
               PreparedStatement sql = conexao.getConexao().prepareStatement(sqlQ);
               sql.setString(1, senha);
               sql.setString(2, login);
@@ -136,7 +138,7 @@ public class Coordenador_DAO {
           Conexao conexao = new Conexao();
           boolean deu = false;
           try{
-              String sqlQ="DELETE FROM ADMINISTRADOR WHERE LOGIN LIKE ? ";
+              String sqlQ="DELETE FROM COORDENADOR WHERE LOGIN LIKE ? ";
               PreparedStatement sql = conexao.getConexao().prepareStatement(sqlQ);
               sql.setString(1, login);
               sql.executeUpdate();

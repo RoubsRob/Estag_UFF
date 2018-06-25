@@ -26,7 +26,7 @@ public class ListaDeCoordenador {
     public void adicionarTodosAdmin(ResultSet resultado) throws SQLException{
         while (resultado.next()){
             Coordenador administrador;
-            administrador = new Coordenador(resultado.getInt("id"),resultado.getString("login"),resultado.getString("senha"));
+            administrador = new Coordenador(resultado.getInt("id"),resultado.getString("login"),resultado.getString("senha"),resultado.getString("nome"));
             this.adicionarAdmin(administrador);
             
             System.out.println("Entrou na lista de adm");

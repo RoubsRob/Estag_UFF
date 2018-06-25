@@ -12,11 +12,13 @@ package DAO;
 public class Coordenador {
     private int id;
     private String login;
+    private String nome;
     private String senha;
 
-    public Coordenador(int id,String login, String senha) {
+    public Coordenador(int id,String login, String senha, String nome) {
         this.id = id;
         this.login = login;
+        this.nome = nome;
         this.senha = senha;
     }
     
