@@ -32,7 +32,7 @@ public class CriaCoordenador extends HttpServlet {
 //        System.out.println("Entrou no VERIFICAR LOGIN!!!");
 try{
        System.out.println("Entrou no servlet CriaCoordenador");
-        String nome_user = request.getParameter("loginCoord");
+        String nome_user = request.getParameter("login");
         String senha_user = request.getParameter("senha");
         Integer id = Integer.parseInt(request.getParameter("id"));
         String nome = request.getParameter("nome");
