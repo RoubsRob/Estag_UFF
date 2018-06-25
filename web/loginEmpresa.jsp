@@ -12,6 +12,7 @@
         <title>Login Empresa</title>
     </head>
     <body>
+        <img src= "imagem/uff.PNG">
         <h1>Login Empresa</h1>    
         <form action="VerificarLoginEmpresa" method="POST">
         Nome <input type="text" name="loginEmpresa"> <br>

@@ -30,7 +30,10 @@
         <li><a href="links.jsp">Links</a></li>
         <li><a href="contato.jsp">Contato</a></li>                
 </ul>
-</nav>
-         
+</nav><br><br>
+<br>    <form method="POST" action="erro.html">
+        <input type="text" name="pesquisa" value="Pesquisar">
+        <input type="submit" value="Pesquisar Vagas">
+        </form> 
     </body>
 </html>

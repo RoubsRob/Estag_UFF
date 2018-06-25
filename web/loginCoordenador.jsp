@@ -12,6 +12,7 @@
         <title>Login Coordenador</title>
     </head>
     <body>
+    <img src= "imagem/uff.PNG">
         <h1>Login Coordenador</h1>    
         <form action="VerificarLoginCoordenador" method="POST">
         Nome <input type="text" name="loginCoord"> <br>
