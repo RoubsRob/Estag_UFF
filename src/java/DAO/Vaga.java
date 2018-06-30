@@ -14,7 +14,7 @@ public class Vaga
 	{
         this.id = id;
         this.publicada = false;
-		if(areas.size() <= 0)
+		if(areas == null || areas.size() <= 0)
                 {
                     this.areas = new ArrayList();
                 }
