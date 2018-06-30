@@ -6,6 +6,9 @@ import java.util.List;
 public class Aluno 
 {
     private int id;
+    private String login;
+    private String senha;
+    
     private String nome;
     private String matricula;
     private int cargaHoraria;
@@ -13,10 +16,12 @@ public class Aluno
     private List<Disciplina> disciplinas;
     private List<Area> areas;
 
-    public Aluno(int id, String nome, String matricula, int cargaHoraria) 
+    public Aluno(int id, String login, String senha, String nome, String matricula, int cargaHoraria) 
     {
         this.id = id;
         this.nome = nome;
+        this.login = login;
+        this.senha = senha;
         this.matricula = matricula;
         this.cargaHoraria = cargaHoraria;
         this.validado = false;
@@ -27,6 +32,16 @@ public class Aluno
     public int GetID()
     {
         return id;
+    }
+    
+    public String GetLogin()
+    {
+        return login;
+    }
+    
+    public String GetSenha()
+    {
+        return senha;
     }
     
     public String GetNome()
