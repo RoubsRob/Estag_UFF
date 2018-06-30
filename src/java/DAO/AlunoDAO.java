@@ -11,6 +11,8 @@ public class AlunoDAO
 {
     private final static String selectSQL = "SELECT * FROM ALUNO";
     private final static String findSQL = "SELECT * FROM ALUNO WHERE ID = ? ";
+    private final static String findValidSQL = "SELECT * FROM ALUNO WHERE VALIDADO = 1 ";
+    private final static String findInvalidSQL = "SELECT * FROM ALUNO WHERE VALIDADO = 0 ";
     private final static String findAreasSQL = "SELECT * FROM ALUNO_AREAS WHERE ALUNO_ID = ? ";
     private final static String findDisciplinasSQL = "SELECT * FROM ALUNO_DISCIPLINAS WHERE ALUNO_ID = ? ";
     private final static String insertSQL = "INSERT INTO ALUNO (id,login,senha,nome,matricula,cargaHoraria) VALUES(?,?,?,?,?,?)";
@@ -27,6 +29,49 @@ public class AlunoDAO
         {
            PreparedStatement preparedStatement;
            preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
+           ResultSet resultado = preparedStatement.executeQuery();
+           if (resultado!= null)
+           {
+               while(resultado.next())
+               {
+                    Aluno proximoAluno = new Aluno(resultado.getInt("id"),
+                            resultado.getString("login"),
+                            resultado.getString("senha"),
+                            resultado.getString("nome"), 
+                            resultado.getString("matricula"), 
+                            resultado.getInt("cargaHoraria"));
+                    alunos.add(proximoAluno);
+
+                    System.out.println("Aluno " + proximoAluno.GetNome() + " foi lido");
+               }
+            }
+        }
+        catch (SQLException e)
+        {
+           e.printStackTrace();
+        }
+        finally
+        {
+            conexao.closeConexao();
+        }
+       
+       return alunos;
+    }
+    
+    public static List<Aluno> Listar(boolean validado)
+    {
+        Conexao conexao = new Conexao();
+        List<Aluno> alunos = new ArrayList();
+        
+        try
+        {
+           PreparedStatement preparedStatement;
+           if(validado)
+               preparedStatement = conexao.getConexao().prepareStatement(findValidSQL);
+           else
+               preparedStatement = conexao.getConexao().prepareStatement(findInvalidSQL);
+           
+           
            ResultSet resultado = preparedStatement.executeQuery();
            if (resultado!= null)
            {
@@ -222,6 +267,38 @@ public class AlunoDAO
           PreparedStatement sql = conexao.getConexao().prepareStatement(updatePasswordSQL);
           sql.setString(1, senha);
           sql.setString(2, login);
+          sql.executeUpdate();
+
+          sucesso = true;
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        finally
+        {
+            conexao.closeConexao();
+        }
+        
+        return sucesso;
+    }
+    
+    public static boolean ValidaAluno(int alunoID, Coordenador coordenador) throws SQLException
+    {
+        if(coordenador == null)
+        {
+            System.out.println("Validação inválida.");
+            return false;
+        }
+        
+        
+        Conexao conexao = new Conexao();
+        boolean sucesso = false;
+        try
+        {
+          PreparedStatement sql = conexao.getConexao().prepareStatement(updateValidationSQL);
+          sql.setInt(1, 1);
+          sql.setInt(2, alunoID);
           sql.executeUpdate();
 
           sucesso = true;
