@@ -5,12 +5,7 @@ import java.util.List;
 
 public class Vaga 
 {
-    private int id;
-    private boolean publicada;
-    private List<Area> areas;
-    
-
-    public Vaga(int id, List<Area> areas) 
+    private int id;public Vaga(int id, List<Area> areas) 
 	{
         this.id = id;
         this.publicada = false;
@@ -23,6 +18,11 @@ public class Vaga
                     this.areas = areas;
                 }
     }
+    private boolean publicada;
+    private List<Area> areas;
+    
+
+    
     
 	public int GetID()
 	{

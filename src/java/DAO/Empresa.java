@@ -6,6 +6,9 @@ import java.util.List;
 public class Empresa 
 {
     private int id;
+    private String login;
+    private String senha;
+    
     private String nome;
     private int cnpj;
     private List<Vaga> vagas;
@@ -13,18 +16,32 @@ public class Empresa
     private boolean validada;
     
     
-    public Empresa(int id, String nome, int cnpj)
+    public Empresa(int id, String login, String senha, String nome, int cnpj)
     {
         this.id = id;
+        this.login = login;
+        this.senha = senha;
+        
         this.nome = nome;
         this.cnpj = cnpj;
-        vagas = new ArrayList();
-        areasAtuacao = new ArrayList();
+        this.validada = false;
+        this.vagas = new ArrayList();
+        this.areasAtuacao = new ArrayList();
     }
     
     public int GetID()
     {
         return id;
+    }
+    
+    public String GetLogin()
+    {
+        return login;
+    }
+    
+    public String GetSenha()
+    {
+        return senha;
     }
     
     public String GetNome()
