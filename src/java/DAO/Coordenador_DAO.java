@@ -90,7 +90,7 @@ public class Coordenador_DAO {
            }catch (SQLException e){
                 e.printStackTrace();
                 System.out.println("Erro insert SQL");
-          }finally{
+          }finally{ 
 
            conexao.closeConexao();
        }return deu;

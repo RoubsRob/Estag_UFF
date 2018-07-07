@@ -15,15 +15,26 @@ public class Aluno
     private boolean validado;
     private List<Disciplina> disciplinas;
     private List<Area> areas;
-
-    public Aluno(int id, String login, String senha, String nome, String matricula, int cargaHoraria) 
+    
+    public Aluno(int id, String login, String senha, String nome, int cargaHoraria,String matricula) 
     {
         this.id = id;
         this.nome = nome;
         this.login = login;
         this.senha = senha;
-        this.matricula = matricula;
         this.cargaHoraria = cargaHoraria;
+        this.matricula = matricula;
+    }
+    
+    public Aluno(int id, String login, String senha, String nome, int cargaHoraria,String matricula, boolean validado, ArrayList Disciplinas, ArrayList Areas ) 
+    {
+        this.id = id;
+        this.nome = nome;
+        this.login = login;
+        this.senha = senha;
+        this.cargaHoraria = cargaHoraria;
+        this.matricula = matricula;
+        
         this.validado = false;
         this.disciplinas = new ArrayList();
         this.areas = new ArrayList();

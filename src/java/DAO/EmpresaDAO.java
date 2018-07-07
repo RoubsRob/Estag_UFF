@@ -19,7 +19,7 @@ public class EmpresaDAO
     private final static String updatePasswordSQL = "UPDATE EMPRESA SET SENHA = ? WHERE LOGIN = ? ";
     private final static String updateValidationSQL = "UPDATE EMPRESA SET VALIDADO = ? WHERE ID = ? ";
     private final static String deleteSQL = "DELETE FROM EMPRESA WHERE LOGIN LIKE ? ";
-    
+    /*
     public static List<Empresa> Listar() throws SQLException
     {
         Conexao conexao = new Conexao();
@@ -98,6 +98,9 @@ public class EmpresaDAO
        
        return empresas;
     }
+    */
+    
+    
     
     public static Empresa Encontrar(int id)
     {
