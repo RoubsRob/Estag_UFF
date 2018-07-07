@@ -84,6 +84,28 @@ public class AlunoDAO
        return admin;
     }
 
+        public static ListaDeAluno ListarNaoAutorizado() throws SQLException{
+       Conexao conexao = new Conexao();
+       ListaDeAluno admin = new ListaDeAluno();
+       
+       try{
+           String selectSQL= "select id,login,senha,nome,cargaHoraria,matricula from aluno where validado = 0";
+           PreparedStatement preparedStatement;
+           preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
+           ResultSet resultado = preparedStatement.executeQuery();
+           if (resultado!= null){
+               admin.adicionarTodosAluno(resultado);
+               System.out.println("Entrou no listar aluno nao autorizado DAO");
+            }
+       }catch (SQLException e){
+           e.printStackTrace();
+       }finally{
+        
+        conexao.closeConexao();
+    }
+       return admin;
+    }
+
     /*
     public static List<Aluno> Listar(boolean validado)
     {
@@ -310,14 +332,14 @@ public class AlunoDAO
         return sucesso;
     }
     
-    public static boolean ValidaAluno(int alunoID, Coordenador coordenador) throws SQLException
+    public static boolean ValidaAluno(int alunoID) throws SQLException
     {
-        if(coordenador == null)
+        /*if(coordenador == null)
         {
             System.out.println("Validação inválida.");
             return false;
         }
-        
+        */
         
         Conexao conexao = new Conexao();
         boolean sucesso = false;

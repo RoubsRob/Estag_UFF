@@ -39,7 +39,10 @@
 </nav><br><br> 
 <br>
                     <form action="ExibeAluno" method="POST">
-                    <input type="submit" value="Exibir Alunos"></form>
+                    <input type="submit" value="Exibir Todos os Alunos"></form>
+
+                    <form action="ExibeAlunoNaoAutorizado" method="POST">
+                    <input type="submit" value="Exibir Alunos Não autorizados"></form>
         
 
 <br>
