@@ -1,7 +1,7 @@
 <%-- 
-    Document   : menuLogadoCoordenador
-    Created on : Jun 25, 2018, 2:14:03 PM
-    Author     : Henrique
+    Document   : menuLogadoEmpresa
+    Created on : 05/07/2018, 10:40:31
+    Author     : Roberta
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,12 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Menu Coordenador</title>
-        <link rel="stylesheet" type="text/css"  href="estilo.css" />
-        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <title>Bem vindo ao SisTag</title>
     </head>
     <body>
-        <img src= "imagem/uff.PNG">
+            <img src= "imagem/uff.PNG">
         <h1>Sistema de Estágios da UFF</h1> 
         <nav>
         <ul class="menu">
@@ -25,12 +23,13 @@
                       <li><a href="erro.jsp">Alterar contato</a></li>
                 </ul>
             </li>
-            <li><a href="#">Autorizar Pedidos</a>
+            <li><a href="#">Vagas</a>
                 <ul>
-                      <li><a href="autorizarAluno.jsp">Autorizar Aluno</a></li>
-                      <li><a href="erro.jsp">Autorizar Empresa</a></li>
-                      <li><a href="erro.jsp">Autorizar Vaga</a></li>
-                      <li><a href="erro.jsp">Autorizar Contrato</a></li>                    
+                      <li><a href="erro.jsp">Criar Vagas</a></li>
+                      <li><a href="erro.jsp">Gerenciar Vagas</a></li>
+                      <li><a href="erro.jsp">Visualizar Vagas</a></li>
+                      <li><a href="erro.jsp">Visualizar Candidatos</a></li>
+                     
                 </ul>
             </li>
         <li><a href="links.jsp">Links</a></li>
@@ -38,14 +37,10 @@
 </ul>
 </nav><br><br> 
 <br>
-                    <form action="ExibeAluno" method="POST">
-                    <input type="submit" value="Exibir Alunos"></form>
-        
-
-<br>
        <form method="POST" action="erro.html">
         <input type="text" name="pesquisa" value="Pesquisar">
         <input type="submit" value="Pesquisar Vagas">
         </form> 
     </body>
+
 </html>
