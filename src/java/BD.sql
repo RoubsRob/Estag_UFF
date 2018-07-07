@@ -44,7 +44,8 @@ CREATE TABLE Aluno(
 	login VarChar(30) NOT NULL,
 	senha VarChar(30) NOT NULL,
 	nome VarChar(30) NOT NULL,
-	cargaHoraria INT NOT NULL,
+	matricula VarChar(30) NOT NULL,
+        cargaHoraria INT NOT NULL,
 	disciplinas INT FOREIGN KEY (disciplinas)
 			REFERENCES Disciplina(id),
 	perfil VarChar(500),

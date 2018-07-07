@@ -49,13 +49,19 @@
             
             %>
             <tr>
+                <td>ID</td>
+                <td>LOGIN</td>
+                <td>NOME</td>
+                <td>MATRICULA</td>
+                <td>CARGA HORARIA</td>
+            </tr>
+            <tr>
             <td> <%=aux.GetID()%></td>
             <td><%=aux.GetLogin()%> </td>
-            <td><%=aux.GetSenha()%> </td>
             <td><%=aux.GetNome()%> </td>
             <td><%=aux.GetMatricula()%> </td>
             <td><%=aux.GetCargaHoraria()%> </td>
-           
+            <td><a href="Autorizar?id=<%=aux.GetID()%>">Autorizar</a> </td>
             
             </tr>
             

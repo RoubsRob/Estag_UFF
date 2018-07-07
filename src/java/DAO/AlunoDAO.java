@@ -1,6 +1,7 @@
 package DAO;
 
 import Controle.Conexao;
+import Controle.ListaDeAluno;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,6 +21,8 @@ public class AlunoDAO
     private final static String updateValidationSQL = "UPDATE ALUNO SET VALIDADO = ? WHERE ID = ? ";
     private final static String deleteSQL = "DELETE FROM ALUNO WHERE LOGIN LIKE ? ";
     
+    
+    /*
     public static List<Aluno> Listar() throws SQLException
     {
         Conexao conexao = new Conexao();
@@ -56,8 +59,32 @@ public class AlunoDAO
         }
        
        return alunos;
-    }
+    }*/
     
+        
+    public static ListaDeAluno Listar() throws SQLException{
+       Conexao conexao = new Conexao();
+       ListaDeAluno admin = new ListaDeAluno();
+       
+       try{
+           String selectSQL= "select id,login,senha,nome,cargaHoraria,matricula from aluno";
+           PreparedStatement preparedStatement;
+           preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
+           ResultSet resultado = preparedStatement.executeQuery();
+           if (resultado!= null){
+               admin.adicionarTodosAluno(resultado);
+               System.out.println("Entrou no listar aluno DAO");
+            }
+       }catch (SQLException e){
+           e.printStackTrace();
+       }finally{
+        
+        conexao.closeConexao();
+    }
+       return admin;
+    }
+
+    /*
     public static List<Aluno> Listar(boolean validado)
     {
         Conexao conexao = new Conexao();
@@ -100,7 +127,7 @@ public class AlunoDAO
        
        return alunos;
     }
-    
+    */
     public static Aluno Encontrar(int id)
     {
         Conexao conexao = new Conexao();
@@ -207,11 +234,11 @@ public class AlunoDAO
 
         try
         {
-            List<Aluno> alunos = Listar();
+            List<Aluno> alunos = (List<Aluno>) Listar();
             for (int i=0; i < alunos.size();i++)
             {
-                if (alunos.get(i).GetLogin().equalsIgnoreCase(login) && 
-                     alunos.get(i).GetSenha().equalsIgnoreCase(senha) )
+                if ((alunos.get(i).EstaValidado()==true) && alunos.get(i).GetLogin().equalsIgnoreCase(login) && 
+                        alunos.get(i).GetSenha().equalsIgnoreCase(senha))
                 {
                     logado = true; 
                 }
