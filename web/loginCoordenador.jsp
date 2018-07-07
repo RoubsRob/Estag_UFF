@@ -12,13 +12,13 @@
         <title>Login Coordenador</title>
     </head>
     <body>
-    <img src= "imagem/uff.PNG">
+        <img src= "imagem/uff.PNG">
         <h1>Login Coordenador</h1>    
         <form action="VerificarLoginCoordenador" method="POST">
-        Nome <input type="text" name="loginCoord"> <br>
-        Senha <input type="password" name="senha"><br>
-        <input type="submit" value="Login"></h1>
-            </form>
+            Nome <input type="text" name="loginCoord"> <br>
+            Senha <input type="password" name="senha"><br>
+            <input type="submit" value="Login"></h1>
+        </form>
 
     </body>
 </html>
