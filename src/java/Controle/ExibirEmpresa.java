@@ -51,7 +51,12 @@ public class ExibirEmpresa extends HttpServlet {
             if (request.getParameter("nomeEmpresa") == null || request.getParameter("nomeEmpresa").equals("")) {
                 List<Empresa> empresas = EmpresaDAO.Listar();
                 for(Empresa e : empresas){
-                out.println(e.toString() + "<br/>");    
+                out.println("" 
+                        + "Empresa: " + e.GetNome() + "<br/>"
+                        + "CNPJ: " + e.GetCNPJ() + "<br/>"
+                        + "Validada: " + e.EstaValidada() + "<br/>"
+                        + "<hr>"
+                        + "<br/>");    
                 }
                 
             }
