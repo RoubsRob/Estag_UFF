@@ -1,20 +1,20 @@
 <%-- 
-    Document   : menuLogadoCoordenador
-    Created on : Jun 25, 2018, 2:14:03 PM
-    Author     : Henrique
+    Document   : ExibeAluno
+    Created on : 05/07/2018, 10:53:00
+    Author     : Roberta
 --%>
 
+<%@page import="Controle.ListaDeAluno"%>
+<%@page import="DAO.Aluno"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Menu Coordenador</title>
-        <link rel="stylesheet" type="text/css"  href="estilo.css" />
-        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <title>Lista de Alunos</title>
     </head>
     <body>
-        <img src= "imagem/uff.PNG">
+                <img src= "imagem/uff.PNG">
         <h1>Sistema de Estágios da UFF</h1> 
         <nav>
         <ul class="menu">
@@ -38,14 +38,33 @@
 </ul>
 </nav><br><br> 
 <br>
-                    <form action="ExibeAluno" method="POST">
-                    <input type="submit" value="Exibir Alunos"></form>
-        
 
-<br>
-       <form method="POST" action="erro.html">
-        <input type="text" name="pesquisa" value="Pesquisar">
-        <input type="submit" value="Pesquisar Vagas">
-        </form> 
+        <h1>Lista de alunos do sistema:</h1>
+    
+                <table>
+            <%
+                ListaDeAluno resultado = (ListaDeAluno) request.getAttribute("listaaluno");
+            for (int i=0; i<resultado.getSize();i++){
+                Aluno aux= resultado.getAluno(i);
+            
+            %>
+            <tr>
+            <td> <%=aux.GetID()%></td>
+            <td><%=aux.GetLogin()%> </td>
+            <td><%=aux.GetSenha()%> </td>
+            <td><%=aux.GetNome()%> </td>
+            <td><%=aux.GetMatricula()%> </td>
+            <td><%=aux.GetCargaHoraria()%> </td>
+           
+            
+            </tr>
+            
+            <%
+                }
+           %>
+            </table>
+            
+                <br><br>
+
     </body>
 </html>

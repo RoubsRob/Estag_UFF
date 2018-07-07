@@ -25,10 +25,10 @@ public class Conexao {
 
     private Connection conexao;
 
-    public Conexao() {
+public Conexao() {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");//load driver
-            conexao = DriverManager.getConnection("jdbc:sqlserver://localhost;databaseName=Sistag_UFF", "estagiouff", "12345678Aa");
+            conexao = DriverManager.getConnection("jdbc:sqlserver://ROB-PC\\SQLEXPRESS;databaseName=roberta2", "sa", "kaka123");
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException("Nao foi possivel efetuar uma conexao com o BD!");
@@ -37,6 +37,7 @@ public class Conexao {
             throw new RuntimeException("Nao foi possivel encontrar a classe referente! Verifique o driver!");
         }
     }
+    
     
     public Connection getConexao(){
         return this.conexao;
