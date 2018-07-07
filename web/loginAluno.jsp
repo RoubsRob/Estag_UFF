@@ -12,11 +12,12 @@
         <title>Login Estudante</title>
     </head>
     <body>
+        <img src= "imagem/uff.PNG">
         <h1>Login Estudante</h1>    
-    <form action="VerificarLoginEstudante" method="POST">
-        Nome <input type="text" name="loginEst"> <br>
-        Senha <input type="password" name="senha"><br>
-        <input type="submit" value="Login"></h1>
-    </form>
+        <form action="VerificarLoginEstudante" method="POST">
+            Nome <input type="text" name="loginEst"> <br>
+            Senha <input type="password" name="senha"><br>
+            <input type="submit" value="Login"></h1>
+        </form>
     </body>
 </html>
