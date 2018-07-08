@@ -44,9 +44,13 @@
                     <form action="ExibeAlunoNaoAutorizado" method="POST">
                     <input type="submit" value="Exibir Alunos Não autorizados"></form>
         
+                    <form action="ExibeVagaNaoAutorizado" method="POST">
+                    <input type="submit" value="Exibir Alunos Não autorizados"></form>
+
+
 
 <br>
-       <form method="POST" action="erro.html">
+       <form method="POST" action="ExibirVaga.html">
         <input type="text" name="pesquisa" value="Pesquisar">
         <input type="submit" value="Pesquisar Vagas">
         </form> 

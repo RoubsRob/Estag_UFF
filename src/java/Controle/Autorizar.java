@@ -29,7 +29,7 @@ public class Autorizar extends HttpServlet {
         AlunoDAO aluno = new AlunoDAO();
         try {
             if (AlunoDAO.ValidaAluno(id)){
-                RequestDispatcher rd = request.getRequestDispatcher("sucesso.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("sucessoCoord.jsp");
                 rd.forward(request, response);
             }
 
@@ -46,7 +46,7 @@ public class Autorizar extends HttpServlet {
         AlunoDAO aluno = new AlunoDAO();
         try {
             AlunoDAO.ValidaAluno(id);
-            RequestDispatcher rd = request.getRequestDispatcher("sucesso.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("sucessoCoord.jsp");
             rd.forward(request, response);
 
         } catch (Exception e) {

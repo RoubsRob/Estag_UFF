@@ -1,6 +1,7 @@
 package DAO;
 
 import Controle.Conexao;
+import Controle.ListaDeVaga;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +17,7 @@ public class VagaDAO
     private final static String insertAreaSQL = "INSERT INTO VAGA_AREA (vaga_id,area_id) VALUES(?,?)";
     private final static String deleteSQL = "DELETE FROM VAGA WHERE ID LIKE ? ";
     
-    public static List<Vaga> Listar() throws SQLException
+/*    public static List<Vaga> Listar() throws SQLException
     {
         Conexao conexao = new Conexao();
         List<Vaga> vagas = new ArrayList();
@@ -50,6 +51,53 @@ public class VagaDAO
        
        return vagas;
     }
+    */
+    
+        public static ListaDeVaga Listar() throws SQLException{
+       Conexao conexao = new Conexao();
+       ListaDeVaga admin = new ListaDeVaga();
+       
+       try{
+           String selectSQL= "select * from vaga";
+           PreparedStatement preparedStatement;
+           preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
+           ResultSet resultado = preparedStatement.executeQuery();
+           if (resultado!= null){
+               admin.adicionarTodosVaga(resultado);
+               System.out.println("Entrou no listar vaga DAO");
+            }
+       }catch (SQLException e){
+           e.printStackTrace();
+       }finally{
+        
+        conexao.closeConexao();
+    }
+       return admin;
+    }
+
+    public static ListaDeVaga ListarNaoAutorizado() throws SQLException{
+       Conexao conexao = new Conexao();
+       ListaDeVaga admin = new ListaDeVaga();
+       
+       try{
+           String selectSQL= "select * from vaga where publicada = 0";
+           PreparedStatement preparedStatement;
+           preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
+           ResultSet resultado = preparedStatement.executeQuery();
+           if (resultado!= null){
+               admin.adicionarTodosVaga(resultado);
+               System.out.println("Entrou no listar vaga DAO");
+            }
+       }catch (SQLException e){
+           e.printStackTrace();
+       }finally{
+        
+        conexao.closeConexao();
+    }
+       return admin;
+    }
+
+        
     
     public static void CarregarAreas(Vaga vaga, Conexao conexao)
     {
@@ -78,7 +126,7 @@ public class VagaDAO
         }
         catch (SQLException e)
         {
-            System.out.println("Vaga " + vaga.GetID() + " não possui areas!");
+            System.out.println("Vaga " + vaga.getId() + " não possui areas!");
         }
     }
     
@@ -94,10 +142,10 @@ public class VagaDAO
            ResultSet resultado = preparedStatement.executeQuery();
            if (resultado!= null)
            {
-                 vaga = new Vaga(resultado.getInt("id"), null);
+                 vaga = new Vaga(resultado.getInt("id"));
                  CarregarAreas(vaga, conexao);
                  
-                 System.out.println("Vaga " + vaga.GetID() + " foi encontrada.");
+                 System.out.println("Vaga " + vaga.getId() + " foi encontrada.");
             }
         }
         catch (SQLException e)

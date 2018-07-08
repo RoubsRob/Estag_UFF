@@ -18,30 +18,31 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Henrique
+ * @author Roberta
  */
-@WebServlet(name = "ExibirVaga", urlPatterns = {"/ExibirVaga"})
-public class ExibirVaga extends HttpServlet {
+@WebServlet(name = "ExibeVagaNaoAutorizado", urlPatterns = {"/ExibeVagaNaoAutorizado"})
+public class ExibeVagaNaoAutorizado extends HttpServlet {
 protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
      
     VagaDAO vaga = new VagaDAO();
             
     try{    
-            ListaDeVaga listavaga = VagaDAO.Listar();
+            ListaDeVaga listavaga = VagaDAO.ListarNaoAutorizado();
+            
             
             if (listavaga != null){
                 HttpSession session = request.getSession();
-                session.setAttribute("listavaga", listavaga);
-                request.setAttribute("listavaga",listavaga);
-                RequestDispatcher resposta = request.getRequestDispatcher("/ExibeVaga.jsp");
+                session.setAttribute("listavaganaoautorizado", listavaga);
+                request.setAttribute("listavaganaoautorizado",listavaga);
+                RequestDispatcher resposta = request.getRequestDispatcher("/ExibeVagaNaoAutorizado.jsp");
                 resposta.forward(request, response);
             }else {
                 RequestDispatcher resposta = request.getRequestDispatcher("/Erro.jsp");
                 resposta.forward(request, response);
             }
           }catch (Exception e){
-    System.out.println("ERRO NA CONSULTA DE VAGA");
+    System.out.println("ERRO NA CONSULTA DE ALUNO NAO AUTORIZADO");
 }
     }    
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

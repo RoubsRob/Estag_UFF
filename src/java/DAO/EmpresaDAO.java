@@ -1,6 +1,7 @@
 package DAO;
 
 import Controle.Conexao;
+import Controle.ListaDeEmpresa;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -41,7 +42,7 @@ public class EmpresaDAO
                             resultado.getInt("cnpj"));
                     empresas.add(proximaEmpresa);
 
-                    System.out.println("Aluno " + proximaEmpresa.GetNome() + " foi lido");
+                    System.out.println("Empresa " + proximaEmpresa.GetNome() + " foi lido");
                }
             }
         }
@@ -100,7 +101,50 @@ public class EmpresaDAO
     }
     */
     
-    
+        public static ListaDeEmpresa Listar() throws SQLException{
+       Conexao conexao = new Conexao();
+       ListaDeEmpresa admin = new ListaDeEmpresa();
+       
+       try{
+           String selectSQL= "select * from empresa";
+           PreparedStatement preparedStatement;
+           preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
+           ResultSet resultado = preparedStatement.executeQuery();
+           if (resultado!= null){
+               admin.adicionarTodosEmpresa(resultado);
+               System.out.println("Entrou no listar empresa DAO");
+            }
+       }catch (SQLException e){
+           e.printStackTrace();
+       }finally{
+        
+        conexao.closeConexao();
+    }
+       return admin;
+    }
+
+        public static ListaDeEmpresa ListarNaoAutorizada() throws SQLException{
+       Conexao conexao = new Conexao();
+       ListaDeEmpresa admin = new ListaDeEmpresa();
+       
+       try{
+           String selectSQL= "select * from empresa where validada = 0";
+           PreparedStatement preparedStatement;
+           preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
+           ResultSet resultado = preparedStatement.executeQuery();
+           if (resultado!= null){
+               admin.adicionarTodosEmpresa(resultado);
+               System.out.println("Entrou no listar empresa DAO");
+            }
+       }catch (SQLException e){
+           e.printStackTrace();
+       }finally{
+        
+        conexao.closeConexao();
+    }
+       return admin;
+    }
+
     
     public static Empresa Encontrar(int id)
     {
