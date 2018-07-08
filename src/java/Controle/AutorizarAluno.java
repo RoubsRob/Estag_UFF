@@ -49,7 +49,7 @@ public class AutorizarAluno extends HttpServlet {
             id = Integer.parseInt(request.getParameter("idAluno"));
             Coordenador c = new Coordenador();
             try {
-                AlunoDAO.ValidaAluno(id, c);
+                AlunoDAO.ValidaAluno(id);
                 out.println("Autorizado com sucesso.<br/>");
             } catch (SQLException ex) {
                 Logger.getLogger(AutorizarAluno.class.getName()).log(Level.SEVERE, null, ex);

@@ -30,7 +30,6 @@
             <li><a href="#">Autorizar Pedidos</a>
                 <ul>
                       <li><a href="autorizarEmpresa.jsp">Autorizar Empresa</a></li>
-                      <li><a href="erro.jsp">Autorizar Empresa</a></li>
                       <li><a href="erro.jsp">Autorizar Vaga</a></li>
                       <li><a href="erro.jsp">Autorizar Contrato</a></li>                    
                 </ul>
