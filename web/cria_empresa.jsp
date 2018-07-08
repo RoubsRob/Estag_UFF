@@ -21,7 +21,7 @@
         Login <input type="text" name="login"><br>
         Senha <input type="password" name="senha"><br>
         ID <input type="password" name="id"><br>
-        ID <input type="password" name="cnpj"><br>
+        CNPJ <input type="password" name="cnpj"><br>
         <input type="submit" value="Login"></h1>
             </form>
     </body>
