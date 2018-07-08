@@ -42,7 +42,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
                 resposta.forward(request, response);
             }
           }catch (Exception e){
-    System.out.println("ERRO NA CONSULTA DE ALUNO NAO AUTORIZADO");
+    System.out.println("ERRO NA CONSULTA DE VAGA NAO AUTORIZADO");
 }
     }    
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

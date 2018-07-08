@@ -8,12 +8,19 @@ public class Vaga
         private int id;
         private int publicada;
         private int area;
+        private List<Area> areas;       
         
-    public Vaga(int id, int publicada, int area){
+/*    public Vaga(int id, int publicada, int area){
             this.id= id;
             this.publicada = publicada;
             this.area = area;
         }
+*/    
+    public Vaga(int id, int area){
+            this.id= id;
+            this.area = area;
+        }
+    
     public Vaga(int id){
             this.id= id;
         }
@@ -21,14 +28,14 @@ public class Vaga
     /**
      * @return the id
      */
-    public int getId() {
+    public int GetID() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(int id) {
+    public void SetID(int id) {
         this.id = id;
     }
 
@@ -59,7 +66,13 @@ public class Vaga
     public void setArea(int area) {
         this.area = area;
     }
-
+    public boolean AddArea(Area novaArea)
+    {
+        if(areas.contains(novaArea))
+            return false;
+        
+        return areas.add(novaArea);
+    }    
 /*    private int id;public Vaga(int id, List<Area> areas) 
 	{
         this.id = id;

@@ -26,7 +26,7 @@ public class ListaDeVaga {
     public void adicionarTodosVaga(ResultSet resultado) throws SQLException{
         while (resultado.next()){
             Vaga vaga;
-            vaga = new Vaga(resultado.getInt("id"),resultado.getInt("publicada"),resultado.getInt("area"));
+            vaga = new Vaga(resultado.getInt("id"),resultado.getInt("area"));
             this.adicionarVaga(vaga);
             System.out.println("Entrou na lista de vagas");
             

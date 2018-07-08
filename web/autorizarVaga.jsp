@@ -31,12 +31,12 @@
                 List<Vaga> vaga = new ArrayList();
                 
                 Vaga resultado = (Vaga) request.getAttribute("listaVagas");
-            for (int i=0; i<resultado.getSize();i++){
-                Vaga aux= resultado.getVaga(i);
+            for (int i=0; i<resultado.etSize();i++){
+                Vaga aux= resultado.GetVaga(i);
             
             %>
             <tr>
-            <td> <%=aux.getId()%></td>
+            <td> <%=aux.GetID()%></td>
             <td><%=aux.getNome()%> </td>
             </tr>
             

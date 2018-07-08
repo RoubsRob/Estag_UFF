@@ -11,10 +11,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Lista de Vagas</title>
         <link rel="stylesheet" type="text/css"  href="estilo.css" />
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     </head>
+    <body>
+                <img src= "imagem/uff.PNG">    
     <h1>Lista de Vagas no sistema:</h1>
     
                 <table>
@@ -26,14 +28,12 @@
             %>
             <tr>
                 <td>ID</td>
-                <td>PUBLICADA</td>
                 <td>AREA</td>
             </tr>
             <tr>
-            <td> <%=aux.getId()%></td>
-            <td><%=aux.getPublicada()%> </td>
+            <td> <%=aux.GetID()%></td>
             <td><%=aux.getArea()%> </td>
-            <td><a href="Autorizar?id=<%=aux.getId()%>">Autorizar</a> </td>
+            <td><a href="Autorizar?id=<%=aux.GetID()%>">Autorizar</a> </td>
             
             </tr>
             

@@ -15,6 +15,7 @@ public class VagaDAO
     private final static String findAreasSQL = "SELECT * FROM VAGA_AREA WHERE VAGA_ID = ? ";
     private final static String insertSQL = "INSERT INTO VAGA (id,nome) VALUES(?,?)";
     private final static String insertAreaSQL = "INSERT INTO VAGA_AREA (vaga_id,area_id) VALUES(?,?)";
+    private final static String updateValidationSQL = "UPDATE vaga SET publicada = ? WHERE id = ? ";
     private final static String deleteSQL = "DELETE FROM VAGA WHERE ID LIKE ? ";
     
 /*    public static List<Vaga> Listar() throws SQLException
@@ -53,12 +54,12 @@ public class VagaDAO
     }
     */
     
-        public static ListaDeVaga Listar() throws SQLException{
+    public static ListaDeVaga Listar() throws SQLException{
        Conexao conexao = new Conexao();
        ListaDeVaga admin = new ListaDeVaga();
        
        try{
-           String selectSQL= "select * from vaga";
+           String selectSQL= "select id, area from vaga";
            PreparedStatement preparedStatement;
            preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
            ResultSet resultado = preparedStatement.executeQuery();
@@ -80,13 +81,13 @@ public class VagaDAO
        ListaDeVaga admin = new ListaDeVaga();
        
        try{
-           String selectSQL= "select * from vaga where publicada = 0";
+           String selectSQL= "select id, area from vaga where publicada = 0";
            PreparedStatement preparedStatement;
            preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
            ResultSet resultado = preparedStatement.executeQuery();
            if (resultado!= null){
                admin.adicionarTodosVaga(resultado);
-               System.out.println("Entrou no listar vaga DAO");
+               System.out.println("Entrou no listar vaga nao autorizado DAO");
             }
        }catch (SQLException e){
            e.printStackTrace();
@@ -111,7 +112,7 @@ public class VagaDAO
                 while(resultado.next())
                {
                     Area area = new Area(resultado.getInt("id"),
-                                            resultado.getString("nome"));
+                            resultado.getString("nome"));
                     
                     if(vaga.AddArea(area))
                     {
@@ -126,7 +127,7 @@ public class VagaDAO
         }
         catch (SQLException e)
         {
-            System.out.println("Vaga " + vaga.getId() + " não possui areas!");
+            System.out.println("Vaga " + vaga.GetID() + " não possui areas!");
         }
     }
     
@@ -145,7 +146,7 @@ public class VagaDAO
                  vaga = new Vaga(resultado.getInt("id"));
                  CarregarAreas(vaga, conexao);
                  
-                 System.out.println("Vaga " + vaga.getId() + " foi encontrada.");
+                 System.out.println("Vaga " + vaga.GetID() + " foi encontrada.");
             }
         }
         catch (SQLException e)
@@ -232,4 +233,29 @@ public class VagaDAO
         
         return sucesso;
     }
+    public static boolean ValidaVaga(int vagaID) throws SQLException
+    {
+        Conexao conexao = new Conexao();
+        boolean sucesso = false;
+        try
+        {
+          PreparedStatement sql = conexao.getConexao().prepareStatement(updateValidationSQL);
+          sql.setInt(1, 1);
+          sql.setInt(2, vagaID);
+          sql.executeUpdate();
+
+          sucesso = true;
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        finally
+        {
+            conexao.closeConexao();
+        }
+        
+        return sucesso;
+    }    
+    
 }
