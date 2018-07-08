@@ -5,6 +5,7 @@
  */
 package Controle;
 
+import DAO.VagaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -14,35 +15,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import DAO.AlunoDAO;
-import Controle.ListaDeAluno;
 
 /**
  *
  * @author Roberta
  */
-@WebServlet(name = "ExibeAluno", urlPatterns = {"/ExibeAluno"})
-public class ExibeAluno extends HttpServlet {
+@WebServlet(name = "ExibeVagaNaoAutorizado", urlPatterns = {"/ExibeVagaNaoAutorizado"})
+public class ExibeVagaNaoAutorizado extends HttpServlet {
 protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
      
-    AlunoDAO aluno = new AlunoDAO();
+    VagaDAO vaga = new VagaDAO();
             
     try{    
-            ListaDeAluno listaaluno = AlunoDAO.Listar();
+            ListaDeVaga listavaga = VagaDAO.ListarNaoAutorizado();
             
-            if (listaaluno != null){
+            
+            if (listavaga != null){
                 HttpSession session = request.getSession();
-                session.setAttribute("listaaluno", listaaluno);
-                request.setAttribute("listaaluno",listaaluno);
-                RequestDispatcher resposta = request.getRequestDispatcher("/ExibeAluno.jsp");
+                session.setAttribute("listavaganaoautorizado", listavaga);
+                request.setAttribute("listavaganaoautorizado",listavaga);
+                RequestDispatcher resposta = request.getRequestDispatcher("/ExibeVagaNaoAutorizado.jsp");
                 resposta.forward(request, response);
             }else {
                 RequestDispatcher resposta = request.getRequestDispatcher("/Erro.jsp");
                 resposta.forward(request, response);
             }
           }catch (Exception e){
-    System.out.println("ERRO NA CONSULTA DE ALUNO");
+    System.out.println("ERRO NA CONSULTA DE ALUNO NAO AUTORIZADO");
 }
     }    
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

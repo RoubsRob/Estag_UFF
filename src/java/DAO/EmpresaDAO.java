@@ -1,6 +1,7 @@
 package DAO;
 
 import Controle.Conexao;
+import Controle.ListaDeEmpresa;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,7 +18,7 @@ public class EmpresaDAO
     private final static String findVagasSQL = "SELECT * FROM EMPRESA_VAGA WHERE EMPRESA_ID = ? ";
     private final static String insertSQL = "INSERT INTO EMPRESA (id,login,senha,nome,cnpj) VALUES(?,?,?,?,?,?)";
     private final static String updatePasswordSQL = "UPDATE EMPRESA SET SENHA = ? WHERE LOGIN = ? ";
-    private final static String updateValidationSQL = "UPDATE EMPRESA SET VALIDADO = ? WHERE ID = ? ";
+    private final static String updateValidationSQL = "UPDATE EMPRESA SET VALIDADA = ? WHERE ID = ? ";
     private final static String deleteSQL = "DELETE FROM EMPRESA WHERE LOGIN LIKE ? ";
     /*
     public static List<Empresa> Listar() throws SQLException
@@ -41,7 +42,7 @@ public class EmpresaDAO
                             resultado.getInt("cnpj"));
                     empresas.add(proximaEmpresa);
 
-                    System.out.println("Aluno " + proximaEmpresa.GetNome() + " foi lido");
+                    System.out.println("Empresa " + proximaEmpresa.GetNome() + " foi lido");
                }
             }
         }
@@ -100,7 +101,50 @@ public class EmpresaDAO
     }
     */
     
-    
+        public static ListaDeEmpresa Listar() throws SQLException{
+       Conexao conexao = new Conexao();
+       ListaDeEmpresa admin = new ListaDeEmpresa();
+       
+       try{
+           String selectSQL= "select * from empresa";
+           PreparedStatement preparedStatement;
+           preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
+           ResultSet resultado = preparedStatement.executeQuery();
+           if (resultado!= null){
+               admin.adicionarTodosEmpresa(resultado);
+               System.out.println("Entrou no listar empresa DAO");
+            }
+       }catch (SQLException e){
+           e.printStackTrace();
+       }finally{
+        
+        conexao.closeConexao();
+    }
+       return admin;
+    }
+
+        public static ListaDeEmpresa ListarNaoAutorizada() throws SQLException{
+       Conexao conexao = new Conexao();
+       ListaDeEmpresa admin = new ListaDeEmpresa();
+       
+       try{
+           String selectSQL= "select * from empresa where validada = 0";
+           PreparedStatement preparedStatement;
+           preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
+           ResultSet resultado = preparedStatement.executeQuery();
+           if (resultado!= null){
+               admin.adicionarTodosEmpresa(resultado);
+               System.out.println("Entrou no listar empresa DAO");
+            }
+       }catch (SQLException e){
+           e.printStackTrace();
+       }finally{
+        
+        conexao.closeConexao();
+    }
+       return admin;
+    }
+
     
     public static Empresa Encontrar(int id)
     {
@@ -280,14 +324,14 @@ public class EmpresaDAO
         return sucesso;
     }
     
-    public static boolean ValidaEmpresa(int empresaID, Coordenador coordenador) throws SQLException
+    public static boolean ValidaEmpresa(int empresaID) throws SQLException
     {
-        if(coordenador == null)
+/*        if(coordenador == null)
         {
             System.out.println("Validação inválida.");
             return false;
         }
-        
+        */
         
         Conexao conexao = new Conexao();
         boolean sucesso = false;

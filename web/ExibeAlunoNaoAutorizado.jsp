@@ -1,11 +1,11 @@
 <%-- 
-    Document   : ExibeAluno
-    Created on : 05/07/2018, 10:53:00
+    Document   : ExibeAlunoNaoAutorizado
+    Created on : 07/07/2018, 20:35:39
     Author     : Roberta
 --%>
 
-<%@page import="Controle.ListaDeAluno"%>
 <%@page import="DAO.Aluno"%>
+<%@page import="Controle.ListaDeAluno"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -45,7 +45,7 @@
     
                 <table>
             <%
-                ListaDeAluno resultado = (ListaDeAluno) request.getAttribute("listaaluno");
+                ListaDeAluno resultado = (ListaDeAluno) request.getAttribute("listaalunonaoautorizado");
             for (int i=0; i<resultado.getSize();i++){
                 Aluno aux= resultado.getAluno(i);
             

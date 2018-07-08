@@ -79,3 +79,12 @@ CREATE TABLE Contrato(
 )
 ; GO
 
+------------POPULANDO TABLES---------
+
+insert into Area (id,nome) values (1,'desenvolvimento web')
+
+insert into Vaga (publicada,area) values (0,1)
+
+insert into Empresa (id,login,senha,nome,cnpj,vaga,validada,areasAtuacao)
+values (1,'empresa','123','E&Y',123,NULL,0,NULL)
+

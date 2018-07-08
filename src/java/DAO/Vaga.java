@@ -5,7 +5,62 @@ import java.util.List;
 
 public class Vaga 
 {
-    private int id;public Vaga(int id, List<Area> areas) 
+        private int id;
+        private int publicada;
+        private int area;
+        
+    public Vaga(int id, int publicada, int area){
+            this.id= id;
+            this.publicada = publicada;
+            this.area = area;
+        }
+    public Vaga(int id){
+            this.id= id;
+        }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the publicada
+     */
+    public int getPublicada() {
+        return publicada;
+    }
+
+    /**
+     * @param publicada the publicada to set
+     */
+    public void setPublicada(int publicada) {
+        this.publicada = publicada;
+    }
+
+    /**
+     * @return the area
+     */
+    public int getArea() {
+        return area;
+    }
+
+    /**
+     * @param area the area to set
+     */
+    public void setArea(int area) {
+        this.area = area;
+    }
+
+/*    private int id;public Vaga(int id, List<Area> areas) 
 	{
         this.id = id;
         this.publicada = false;
@@ -26,17 +81,17 @@ public class Vaga
     
 	public int GetID()
 	{
-		return id;
+		return getId();
 	}
 	
 	public boolean EstaPublicada()
 	{
-		return publicada;
+		return getPublicada();
 	}
 	
 	public void Publicar()
 	{
-		publicada = true;
+		setPublicada(true);
 	}
 	
 	public List<Area> GetAreas()
@@ -106,4 +161,6 @@ public class Vaga
 		
 		return null;
 	}
+
+*/
 }

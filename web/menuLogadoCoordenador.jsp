@@ -39,11 +39,20 @@
 </nav><br><br> 
 <br>
                     <form action="ExibeAluno" method="POST">
-                    <input type="submit" value="Exibir Alunos"></form>
+                    <input type="submit" value="Exibir Todos os Alunos"></form>
+
+                    <form action="ExibeAlunoNaoAutorizado" method="POST">
+                    <input type="submit" value="Exibir Alunos Não autorizados"></form>
         
+                    <form action="ExibeVagaNaoAutorizado" method="POST">
+                    <input type="submit" value="Exibir Vagas Não autorizadas"></form>
+
+                    <form action="ExibeEmpresaNaoAutorizado" method="POST">
+                    <input type="submit" value="Exibir Empresas Não autorizadas"></form>
+
 
 <br>
-       <form method="POST" action="erro.html">
+       <form method="POST" action="ExibirVaga.html">
         <input type="text" name="pesquisa" value="Pesquisar">
         <input type="submit" value="Pesquisar Vagas">
         </form> 
