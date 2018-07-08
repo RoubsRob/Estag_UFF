@@ -27,7 +27,7 @@
             </li>
             <li><a href="#">Autorizar Pedidos</a>
                 <ul>
-                      <li><a href="autorizarAluno.jsp">Autorizar Aluno</a></li>
+                      <li><a href="ExibeAlunoNaoAutorizado?">Autorizar Aluno</a></li>
                       <li><a href="erro.jsp">Autorizar Empresa</a></li>
                       <li><a href="erro.jsp">Autorizar Vaga</a></li>
                       <li><a href="erro.jsp">Autorizar Contrato</a></li>                    

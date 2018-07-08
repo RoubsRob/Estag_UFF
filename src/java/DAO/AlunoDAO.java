@@ -16,7 +16,7 @@ public class AlunoDAO
     private final static String findInvalidSQL = "SELECT * FROM ALUNO WHERE VALIDADO = 0 ";
     private final static String findAreasSQL = "SELECT * FROM ALUNO_AREAS WHERE ALUNO_ID = ? ";
     private final static String findDisciplinasSQL = "SELECT * FROM ALUNO_DISCIPLINAS WHERE ALUNO_ID = ? ";
-    private final static String insertSQL = "INSERT INTO ALUNO (id,login,senha,nome,matricula,cargaHoraria) VALUES(?,?,?,?,?,?)";
+    private final static String insertSQL = "INSERT INTO ALUNO (id,login,senha,nome,matricula,cargaHoraria,validado) VALUES(?,?,?,?,?,?,?)";
     private final static String updatePasswordSQL = "UPDATE ALUNO SET SENHA = ? WHERE LOGIN = ? ";
     private final static String updateValidationSQL = "UPDATE ALUNO SET VALIDADO = ? WHERE ID = ? ";
     private final static String deleteSQL = "DELETE FROM ALUNO WHERE LOGIN LIKE ? ";
@@ -291,6 +291,8 @@ public class AlunoDAO
             sql.setString(4, nome);
             sql.setString(5, matricula);
             sql.setInt(6, 0); //Carga Horária é alterada pelo Coordenador, não pelo aluno.
+            sql.setInt(7, 0); 
+            
             sql.executeUpdate();
             sucesso = true;
          }
