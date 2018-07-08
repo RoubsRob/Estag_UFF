@@ -2,6 +2,7 @@ package DAO;
 
 import Controle.Conexao;
 import Controle.ListaDeAluno;
+import Controle.ListaDeAluno;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -249,6 +250,36 @@ public class AlunoDAO
         }
     }
 
+        public static boolean SenhaCorreta(String login, String senha) throws SQLException{
+       Conexao conexao = new Conexao();
+       ListaDeAluno admin = new ListaDeAluno();
+       boolean logado = false;
+       
+       try{
+           String selectSQL= "select * from aluno";
+           PreparedStatement preparedStatement;
+           preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
+           ResultSet resultado = preparedStatement.executeQuery();
+           if (resultado!= null){
+               admin.adicionarTodosAluno(resultado);
+               System.out.println("RESULTADO SQL: "+ resultado);
+            }
+           for (int i=0; i<admin.getSize();i++){
+               if (admin.getAluno(i).GetLogin().equalsIgnoreCase(login) && 
+                    admin.getAluno(i).GetSenha().equalsIgnoreCase(senha) ){
+                    logado=true; 
+               }
+           }
+       }catch (SQLException e){
+           e.printStackTrace();
+       }finally{
+        
+        conexao.closeConexao();
+    }
+       return logado;
+    }
+
+    /*
     public static boolean SenhaCorreta(String login, String senha) throws SQLException
     {
         Conexao conexao = new Conexao();
@@ -277,7 +308,7 @@ public class AlunoDAO
 
         return logado;
     }
-
+*/
     public static boolean Criar(Integer id,String login, String senha, String nome, String matricula) throws SQLException
     {
         Conexao conexao = new Conexao();
