@@ -40,7 +40,10 @@ try{
         
         try {
               if(AlunoDAO.SenhaCorreta(nome_user, senha_user)){  
-
+                
+                  System.out.println("senha aluno correta");
+                  
+                  
                 HttpSession session = request.getSession();
                 session.setAttribute("NomeAlunoLogado", nome_user);
                 session.setAttribute("logado", "ok");

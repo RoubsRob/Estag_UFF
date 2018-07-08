@@ -18,6 +18,9 @@
             Nome <input type="text" name="loginEst"> <br>
             Senha <input type="password" name="senha"><br>
             <input type="submit" value="Login"></h1>
+            <br>
+            <a href="cria_aluno.jsp"> Crie seu login! </a>
+            
         </form>
     </body>
 </html>

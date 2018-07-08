@@ -6,6 +6,7 @@
 package Controle;
 
 import DAO.AlunoDAO;
+import DAO.Coordenador_DAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -18,32 +19,33 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Henrique
+ * @author Roberta
  */
 @WebServlet(name = "CriaAluno", urlPatterns = {"/CriaAluno"})
 public class CriaAluno extends HttpServlet {
 
    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        System.out.println("Entrou no VERIFICAR LOGIN!!!");
 try{
        System.out.println("Entrou no servlet CriaAluno");
-        String nome_user = request.getParameter("login");
-        String senha_user = request.getParameter("senha");
-        Integer id = Integer.parseInt(request.getParameter("id"));
-        String nome = request.getParameter("nome");
-             
+       String nome = request.getParameter("nome"); 
+       String login = request.getParameter("login");
+        String senha = request.getParameter("senha");
+        String matricula = request.getParameter("matricula");
+        Integer id = Integer.parseInt(request.getParameter("matricula"));
+        Integer carga = Integer.parseInt(request.getParameter("cargaHoraria"));
+        Integer disciplinas = Integer.parseInt(request.getParameter("disciplinas"));
+        String perfil = request.getParameter("perfil");
         
         
         try {
 
-              if(AlunoDAO.Criar(id,nome_user, senha_user,nome,""+id)){  
+              if(AlunoDAO.Criar(id,login,senha,nome,matricula)){  
 
-                Cookie meuCookie = new Cookie("Nome", nome_user);
+                Cookie meuCookie = new Cookie("Nome", nome);
                 meuCookie.setMaxAge(60*30);
                 response.addCookie(meuCookie);
                 
@@ -55,7 +57,7 @@ try{
         } catch (SQLException ex) {
             RequestDispatcher resposta = request.getRequestDispatcher("/erro.jsp");
             resposta.forward(request, response);
-            Logger.getLogger(VerificarLoginEstudante.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VerificarLoginCoordenador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }catch (Exception e){
     System.out.println("ERRO NO LOGIN");
@@ -63,8 +65,6 @@ try{
     resposta.forward(request, response);
     }
     }
-   
-   @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
                 response.sendRedirect("index.jsp");

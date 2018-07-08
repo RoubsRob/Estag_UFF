@@ -1,7 +1,7 @@
 <%-- 
-    Document   : cria_aluno
-    Created on : Jul 7, 2018, 10:02:42 PM
-    Author     : Henrique
+    Document   : cria_empresa
+    Created on : 08/07/2018, 10:34:04
+    Author     : Roberta
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -17,11 +17,20 @@
         <img src= "imagem/uff.PNG">
         <h1>Entre com os dados abaixo:</h1>
             <form action="CriaAluno" method="POST">
-        Nome <input type="text" name="nome"> <br>
-        Login <input type="text" name="login"><br>
-        Senha <input type="password" name="senha"><br>
-        Matrícula <input type="password" name="id"><br>
-        <input type="submit" value="Login"></h1>
+        Nome <input type="text" name="nome"> <br><br>
+        Login <input type="text" name="login"><br><br>
+        Senha <input type="password" name="senha"><br><br>
+        Matrícula <input type="text" name="matricula"><br><br>
+        Carga Horária Realizada <input type="text" name="cargaHoraria"><br><br>
+        Disciplina de maior interesse 
+        <select name="disciplinas">
+            <option value="1">Desenv Aplic Corporativas</option>
+            <option value="2">Desenvolvimento Web</option>
+            <option value="3">Segurança da Informação</option>
+        </select><br><br>
+        Perfil <input type="text" name="perfil"><br><br>
+        <input type="submit" value="Criar Login"></h1>
             </form>
+       
     </body>
 </html>

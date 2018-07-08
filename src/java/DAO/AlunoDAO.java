@@ -2,6 +2,7 @@ package DAO;
 
 import Controle.Conexao;
 import Controle.ListaDeAluno;
+import Controle.ListaDeAluno;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +17,7 @@ public class AlunoDAO
     private final static String findInvalidSQL = "SELECT * FROM ALUNO WHERE VALIDADO = 0 ";
     private final static String findAreasSQL = "SELECT * FROM ALUNO_AREAS WHERE ALUNO_ID = ? ";
     private final static String findDisciplinasSQL = "SELECT * FROM ALUNO_DISCIPLINAS WHERE ALUNO_ID = ? ";
-    private final static String insertSQL = "INSERT INTO ALUNO (id,login,senha,nome,matricula,cargaHoraria) VALUES(?,?,?,?,?,?)";
+    private final static String insertSQL = "INSERT INTO ALUNO (id,login,senha,nome,matricula,cargaHoraria,validado) VALUES(?,?,?,?,?,?,?)";
     private final static String updatePasswordSQL = "UPDATE ALUNO SET SENHA = ? WHERE LOGIN = ? ";
     private final static String updateValidationSQL = "UPDATE ALUNO SET VALIDADO = ? WHERE ID = ? ";
     private final static String deleteSQL = "DELETE FROM ALUNO WHERE LOGIN LIKE ? ";
@@ -249,6 +250,36 @@ public class AlunoDAO
         }
     }
 
+        public static boolean SenhaCorreta(String login, String senha) throws SQLException{
+       Conexao conexao = new Conexao();
+       ListaDeAluno admin = new ListaDeAluno();
+       boolean logado = false;
+       
+       try{
+           String selectSQL= "select * from aluno";
+           PreparedStatement preparedStatement;
+           preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
+           ResultSet resultado = preparedStatement.executeQuery();
+           if (resultado!= null){
+               admin.adicionarTodosAluno(resultado);
+               System.out.println("RESULTADO SQL: "+ resultado);
+            }
+           for (int i=0; i<admin.getSize();i++){
+               if (admin.getAluno(i).GetLogin().equalsIgnoreCase(login) && 
+                    admin.getAluno(i).GetSenha().equalsIgnoreCase(senha) ){
+                    logado=true; 
+               }
+           }
+       }catch (SQLException e){
+           e.printStackTrace();
+       }finally{
+        
+        conexao.closeConexao();
+    }
+       return logado;
+    }
+
+    /*
     public static boolean SenhaCorreta(String login, String senha) throws SQLException
     {
         Conexao conexao = new Conexao();
@@ -277,7 +308,7 @@ public class AlunoDAO
 
         return logado;
     }
-
+*/
     public static boolean Criar(Integer id,String login, String senha, String nome, String matricula) throws SQLException
     {
         Conexao conexao = new Conexao();
@@ -291,6 +322,8 @@ public class AlunoDAO
             sql.setString(4, nome);
             sql.setString(5, matricula);
             sql.setInt(6, 0); //Carga Horária é alterada pelo Coordenador, não pelo aluno.
+            sql.setInt(7, 0); 
+            
             sql.executeUpdate();
             sucesso = true;
          }
