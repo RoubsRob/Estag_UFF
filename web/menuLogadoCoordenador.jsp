@@ -45,8 +45,10 @@
                     <input type="submit" value="Exibir Alunos Não autorizados"></form>
         
                     <form action="ExibeVagaNaoAutorizado" method="POST">
-                    <input type="submit" value="Exibir Alunos Não autorizados"></form>
+                    <input type="submit" value="Exibir Vagas Não autorizadas"></form>
 
+                    <form action="ExibeEmpresaNaoAutorizado" method="POST">
+                    <input type="submit" value="Exibir Empresas Não autorizadas"></form>
 
 
 <br>
