@@ -12,6 +12,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Lista de Alunos</title>
+        <link rel="stylesheet" type="text/css"  href="estilo.css" />
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     </head>
     <body>
                 <img src= "imagem/uff.PNG">

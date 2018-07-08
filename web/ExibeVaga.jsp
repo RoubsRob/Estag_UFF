@@ -12,6 +12,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Lista De Vagas</title>
+        <link rel="stylesheet" type="text/css"  href="estilo.css" />
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     </head>
     <body>
         <h1>Lista de Vagas no sistema:</h1>
