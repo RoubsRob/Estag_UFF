@@ -42,10 +42,16 @@
                     <input type="submit" value="Exibir Todos os Alunos"></form>
 
                     <form action="ExibeAlunoNaoAutorizado" method="POST">
-                    <input type="submit" value="Exibir Alunos Não autorizados"></form>
-        
+                    <input type="submit" value="Exibir Alunos Não Autorizados"></form>
+
+                    <form action="ExibeVaga" method="POST">
+                    <input type="submit" value="Exibir Todas as Vagas"></form>
+
                     <form action="ExibeVagaNaoAutorizado" method="POST">
-                    <input type="submit" value="Exibir Vagas Não autorizadas"></form>
+                    <input type="submit" value="Exibir Vagas Não Autorizadas"></form>
+
+                    <form action="ExibeEmpresa" method="POST">
+                    <input type="submit" value="Exibir Todas as Empresas"></form>
 
                     <form action="ExibeEmpresaNaoAutorizado" method="POST">
                     <input type="submit" value="Exibir Empresas Não autorizadas"></form>

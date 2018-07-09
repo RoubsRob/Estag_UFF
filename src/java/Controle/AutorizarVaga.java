@@ -49,7 +49,7 @@ public class AutorizarVaga extends HttpServlet {
             id = Integer.parseInt(request.getParameter("idVaga"));
             Coordenador c = new Coordenador();
             try {
-                VagaDAO.ValidaVaga(id, c);
+                VagaDAO.ValidaVaga(id);
                 out.println("Autorizado com sucesso.<br/>");                        
             } catch (SQLException ex) {
                 Logger.getLogger(AutorizarVaga.class.getName()).log(Level.SEVERE, null, ex);

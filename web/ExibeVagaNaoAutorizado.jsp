@@ -16,8 +16,8 @@
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     </head>
     <body>
-                <img src= "imagem/uff.PNG">    
-    <h1>Lista de Vagas no sistema:</h1>
+        <img src= "imagem/uff.PNG">    
+        <h1>Lista de Vagas no sistema:</h1>
     
                 <table>
             <%
