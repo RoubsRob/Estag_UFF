@@ -2,7 +2,6 @@ package DAO;
 
 import Controle.Conexao;
 import Controle.ListaDeAluno;
-import Controle.ListaDeAluno;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -85,12 +84,12 @@ public class AlunoDAO
        return admin;
     }
 
-        public static ListaDeAluno ListarNaoAutorizado() throws SQLException{
+    public static ListaDeAluno ListarNaoAutorizado() throws SQLException{
        Conexao conexao = new Conexao();
        ListaDeAluno admin = new ListaDeAluno();
        
        try{
-           String selectSQL= "select id,login,senha,nome,cargaHoraria,matricula from aluno where validado = 0";
+           String selectSQL= "select id,login,senha,nome,cargaHoraria,matricula from aluno where Cardo = 0";
            PreparedStatement preparedStatement;
            preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
            ResultSet resultado = preparedStatement.executeQuery();
@@ -167,8 +166,8 @@ public class AlunoDAO
                          resultado.getString("login"),
                          resultado.getString("senha"),
                          resultado.getString("nome"), 
-                         resultado.getString("matricula"), 
-                         resultado.getInt("cargaHoraria"));
+                         resultado.getInt("matricula"), 
+                         resultado.getString("cargaHoraria"));
 
                  System.out.println("Aluno " + aluno.GetNome() + " foi encontrado.");
             }
