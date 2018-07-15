@@ -12,7 +12,12 @@
         <title>Links Úteis</title>
     </head>
     <body>
-        <img src="imagem/em_construção.jpg" alt="Página em Construção">
+        Links úteis:
+        <br><br>       
+        <a href="http://www.uff.br/">Institucional</a><br/>
+        <a href="http://www.uff.br/?q=grupo/graduacao">Graduação</a><br/>
+        <a href="http://www.uff.br/?q=grupo/estagios">Estágios</a><br/>
+        <a href="http://www.uff.br/%3Fq%3Dsetor/divisao-de-estagios?q=servicos/estudantes">Serviços para Estudantes</a><br/>
         <nav>
             <ul class="menu">
                 <li><a href="index.jsp">Home</a></li>      

@@ -12,9 +12,14 @@
         <title>Contato</title>
     </head>
     <body>
-Aluno, para solicitar autorização de acesso entre em contato com a coordenação do seu curso:
-<br><br>       
-<a href="http://www.uff.br/?q=unidades-cursos">Coordenações</a>
+        Aluno, para solicitar autorização de acesso entre em contato com a coordenação do seu curso:
+    <br><br>       
+    <a href="http://www.uff.br/?q=unidades-cursos">Coordenações</a>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.jsp">Home</a></li>      
+            </ul>
+        </nav>
 
     </body>
 </html>
