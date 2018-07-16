@@ -12,7 +12,13 @@
         <title>Sobre</title>
     </head>
     <body>
-        <img src="imagem/em_construção.jpg" alt="Página em Construção">
+        <br><br>
+    <center>O Sistema de Gerenciamento de Estágios da UFF é um sistema acadêmico que visa
+atender às necessidades de alunos, coordenadores e empresas ligados à Universidade Federal
+Fluminense. Foi concebido para proporcionar aos diferentes perfis de usuários as ações de
+divulgar, manter, acompanhar e gerenciar, entre outros, informações sobre possíveis vagas de
+estágio.</center>
+        <br><br>
         <nav>
             <ul class="menu">
                 <li><a href="index.jsp">Home</a></li>      

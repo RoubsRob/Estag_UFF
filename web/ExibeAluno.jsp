@@ -63,7 +63,6 @@
             <td><%=aux.GetNome()%> </td>
             <td><%=aux.GetMatricula()%> </td>
             <td><%=aux.GetCargaHoraria()%> </td>
-            <td><a href="Autorizar?id=<%=aux.GetID()%>">Autorizar</a> </td>
             
             </tr>
             

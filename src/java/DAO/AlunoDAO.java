@@ -89,7 +89,7 @@ public class AlunoDAO
        ListaDeAluno admin = new ListaDeAluno();
        
        try{
-           String selectSQL= "select id,login,senha,nome,cargaHoraria,matricula from aluno where Cardo = 0";
+           String selectSQL= "select id,login,senha,nome,cargaHoraria,matricula from aluno where validado = 0";
            PreparedStatement preparedStatement;
            preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
            ResultSet resultado = preparedStatement.executeQuery();

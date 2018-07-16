@@ -18,7 +18,7 @@ public class Vaga
 */    
     public Vaga(int id, int area){
             this.id= id;
-            this.area = area;
+            //this.area = area;
         }
     
     public Vaga(int id){

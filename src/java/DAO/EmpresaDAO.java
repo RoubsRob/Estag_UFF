@@ -223,7 +223,7 @@ public class EmpresaDAO
            {
                 while(resultado.next())
                {
-                    Vaga vaga = new Vaga(resultado.getInt("id"), null);
+                    Vaga vaga = new Vaga(resultado.getInt("id"));
                     
                     if(empresa.AddVaga(vaga))
                     {
